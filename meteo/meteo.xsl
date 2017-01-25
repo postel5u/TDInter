@@ -18,13 +18,13 @@
          </html>
        </xsl:template>
        <xsl:template match="echeance">
-
+         <h3>Le <xsl:value-of select="@timestamp"/></h3>
          <xsl:apply-templates select="temperature/level"/>
        </xsl:template>
 
        <xsl:template match="temperature/level">
          <xsl:if test="@val = 'sol'">
-           <p>Temperature : <xsl:value-of select=". -273.15"/>°C</p>
+           <p>Temperature : <xsl:value-of select="round((. -273.15)* 100) div 100"/>°C</p>
          </xsl:if>
        </xsl:template>
 
