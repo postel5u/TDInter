@@ -6,36 +6,27 @@
       encoding = "UTF-8"
       indent = "yes"
        />
+       <xsl:template match="/previsions">
+         <html>
+           <head></head>
+           <body>
+             <h1>Meteo a Nancy</h1>
 
-<xsl:template match="/">
+             <p><xsl:apply-templates select="echeance"/></p>
 
-  <html>
+           </body>
+         </html>
+       </xsl:template>
+       <xsl:template match="echeance">
 
-    <head>
+         <xsl:apply-templates select="temperature/level"/>
+       </xsl:template>
 
-    </head>
+       <xsl:template match="temperature/level">
+         <xsl:if test="@val = 'sol'">
+           <p>Temperature : <xsl:value-of select=". -273.15"/>°C</p>
+         </xsl:if>
+       </xsl:template>
 
-    <body>
-        <xsl:apply-templates select="echeance"/>
-    </body>
-
-  </html>
-
-</xsl:template>
-
-
-<xsl:template match="echeance">
-
-  <h2><xsl:value-of select="@timestamp"/></h2>
-
-</xsl:template>
-
-<xsl:template match="temperature">
-    <p>Temperature au sol: <xsl:value-of select="sol"/></p>
-</xsl:template>
-
-<xsl:template match="text()">
-
-</xsl:template>
 
 </xsl:stylesheet>
