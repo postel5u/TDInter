@@ -22,7 +22,7 @@
          </html>
        </xsl:template>
        <xsl:template match="echeance">
-         <xsl:if test="substring(@timestamp, 12,2) = '13'">
+         <xsl:if test="substring(@timestamp, 12,2) = '10' or substring(@timestamp, 12,2) = '16'">
            <div>
              <h3>
                Le <xsl:value-of select="substring(@timestamp, 9,2)"/>/<xsl:value-of select="substring(@timestamp, 6,2)"/>/<xsl:value-of select="substring(@timestamp, 1,4)"/> à <xsl:value-of select="substring(@timestamp, 12,2)"/>h
