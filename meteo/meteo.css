@@ -1,0 +1,6 @@
+body > div > div {
+  display: inline-block;
+  border: 1px solid black;
+  margin-left: 40%;
+  margin-bottom:5%;
+}
