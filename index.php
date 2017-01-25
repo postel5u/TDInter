@@ -8,7 +8,7 @@
 
   var_dump($clientIp);
 
-  $local = simplexml_load_string(file_get_contents("http://ip-api.com/xml/37.168.5.201", $context));
+  $local = simplexml_load_string(file_get_contents("http://ip-api.com/xml/37.168.5.201", false, $context));
 
   var_dump($local->query[0]);
 
