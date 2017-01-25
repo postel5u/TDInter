@@ -16,7 +16,7 @@
     </head>
 
     <body>
-
+        <xsl:apply-templates select="echeance"/>
     </body>
 
   </html>
@@ -26,7 +26,15 @@
 
 <xsl:template match="echeance">
 
-  <h2></h2>
+  <h2><xsl:value-of select="@timestamp"/></h2>
+
+</xsl:template>
+
+<xsl:template match="temperature">
+    <p>Temperature au sol: <xsl:value-of select="sol"/></p>
+</xsl:template>
+
+<xsl:template match="text()">
 
 </xsl:template>
 
