@@ -18,7 +18,7 @@
          </html>
        </xsl:template>
        <xsl:template match="echeance">
-         <h3>Le <xsl:value-of select="@timestamp"/></h3>
+         <h3>Le <xsl:value-of select="substring(@timestamp, 6,2)"/>/<xsl:value-of select="substring(@timestamp, 9,2)"/>/<xsl:value-of select="substring(@timestamp, 1,4)"/></h3>
          <xsl:apply-templates select="temperature/level"/>
        </xsl:template>
 
