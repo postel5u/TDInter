@@ -13,10 +13,9 @@
              <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
            </head>
            <body>
-             <h1>Meteo a Nancy</h1>
 
              <div>
-               <xsl:apply-templates select="echeance"/>
+               <xsl:apply-templates select="echeance[position() &lt; 5]"/>
              </div>
 
              <div id="mapid"></div>
@@ -29,38 +28,34 @@
            </body>
          </html>
        </xsl:template>
-       <xsl:template match="echeance">
-         <xsl:if test="substring(@timestamp, 12,2) = '10' or substring(@timestamp, 12,2) = '16' or substring(@timestamp, 12,2) = '13'">
+       <xsl:template match="echeance[position() &lt; 5]">
            <div>
              <h3>
                Le <xsl:value-of select="substring(@timestamp, 9,2)"/>/<xsl:value-of select="substring(@timestamp, 6,2)"/>/<xsl:value-of select="substring(@timestamp, 1,4)"/> à <xsl:value-of select="substring(@timestamp, 12,2)"/>h
              </h3>
-             <xsl:apply-templates select="temperature/level"/>
+             <xsl:apply-templates select="temperature/level[@val = 'sol']"/>
              <xsl:apply-templates select="pluie"/>
-
            </div>
-         </xsl:if>
        </xsl:template>
 
-       <xsl:template match="temperature/level">
-         <xsl:if test="@val = 'sol'">
+       <xsl:template match="temperature/level[@val = 'sol']">
            <p>
              Temperature : <xsl:value-of select="round((. -273.15))"/>°C
            </p>
-         </xsl:if>
        </xsl:template>
+
        <xsl:template match="pluie">
          <xsl:choose>
-           <xsl:when test=". &lt; 3">
+           <xsl:when test=". &lt; 2">
              <p>Pas de pluie</p>
            </xsl:when>
-           <xsl:when test=". &gt; 3 and . &lt; 7">
+           <xsl:when test=". &gt; 2 and . &lt; 8">
              <p>Faible pluie</p>
            </xsl:when>
-           <xsl:when test=". &gt; 7 and . &lt; 20">
+           <xsl:when test=". &gt; 8 and . &lt; 30">
              <p>Pluie</p>
            </xsl:when>
-           <xsl:when test=". &gt; 20 and . &lt; 50">
+           <xsl:when test=". &gt; 30 and . &lt; 60">
              <p>Forte pluie</p>
            </xsl:when>
            <xsl:otherwise>
