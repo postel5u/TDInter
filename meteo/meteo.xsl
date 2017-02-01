@@ -13,7 +13,6 @@
              <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
            </head>
            <body>
-             <h1>Meteo a Nancy</h1>
 
              <div>
                <xsl:apply-templates select="echeance[position() &lt; 5]"/>

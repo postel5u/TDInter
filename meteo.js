@@ -4,7 +4,7 @@ $.ajax( {
   dataType: 'jsonp',
   success: function(location) {
      $.ajax({
-       url: 'http://ip-api.com/xml/'+location.ip,
+       url: 'https://ip-api.com/xml/'+location.ip,
        type: 'GET',
        success: function(xml){
 
