@@ -10,6 +10,7 @@
          <html>
            <head>
              <link href="meteo.css" rel="stylesheet"/>
+             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
            </head>
            <body>
              <h1>Meteo a Nancy</h1>
@@ -18,6 +19,13 @@
                <xsl:apply-templates select="echeance"/>
              </div>
 
+             <div id="mapid"></div>
+             <script
+             src="https://code.jquery.com/jquery-3.1.1.min.js"
+			       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			       crossorigin="anonymous"></script>
+             <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+             <script src="meteo.js"></script>
            </body>
          </html>
        </xsl:template>
