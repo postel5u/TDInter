@@ -7,26 +7,13 @@
       indent = "yes"
        />
        <xsl:template match="/previsions">
-         <html>
-           <head>
-             <link href="meteo.css" rel="stylesheet"/>
-             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-           </head>
-           <body>
-
-             <div>
+         <div>
                <xsl:apply-templates select="echeance[position() &lt; 5]"/>
              </div>
 
              <div id="mapid"></div>
-             <script
-             src="https://code.jquery.com/jquery-3.1.1.min.js"
-			       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			       crossorigin="anonymous"></script>
-             <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-             <script src="meteo.js"></script>
-           </body>
-         </html>
+
+
        </xsl:template>
        <xsl:template match="echeance[position() &lt; 5]">
            <div>
@@ -40,7 +27,7 @@
 
        <xsl:template match="temperature/level[@val = 'sol']">
            <p>
-             Temperature : <xsl:value-of select="round((. -273.15))"/>°C
+             Température : <xsl:value-of select="round((. -273.15))"/>°C
            </p>
        </xsl:template>
 
