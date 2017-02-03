@@ -17,14 +17,7 @@ $xslt = new XSLTProcessor();
 $xsl = new DOMDocument();
 $xsl->load("meteo/meteo.xsl");
 $xslt->importStylesheet($xsl);
-echo "<!DOCTYPE html>
-        <html>
-           <head>
-             <link href=\"meteo.css\" rel=\"stylesheet\"/>
-             <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.0.3/dist/leaflet.css\" />
-             <meta charset='UTF-8'/>
-           </head>
-           <body>";
+echo ";
 echo "<h1>Météo à $local->city</h1>";
 echo $xslt->transformToXML($meteo);
 echo "<script

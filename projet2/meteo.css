@@ -1,0 +1,16 @@
+body > div > div {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 1%;
+}
+body > div{
+  text-align: center;
+}
+#mapid {
+  height: 460px;
+  margin-top: 2em;
+}
+
+body {
+  background-color: lightgrey;
+}
