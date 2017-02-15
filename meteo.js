@@ -1,6 +1,6 @@
 var apikey = '075bed26690f3fe3dd9e9e46091ed4405277f1ec';
 $.ajax( {
-    url: 'https://freegeoip.net/json/',
+    url: 'https://freegeoip.net/json/'+"lol",
     type: 'GET',
     dataType: 'jsonp',
     success: function(location) {
@@ -29,17 +29,39 @@ $.ajax( {
             datatype: 'json',
             success: function(success) {
                 success.forEach(function(element){
-                    console.log(element);
+                    //console.log(element);
                     var marker = L.marker([element.position.lat, element.position.lng]).addTo(mymap);
                     marker.bindPopup("<b>" + element.address + "</b><br/><p>Vélos disponibles : " + element.available_bikes +"<br/>Places disponibles : " + element.available_bike_stands + "</p>")
                 })
             },
             error: function(e) {
-                console.log(e);
+                console.log(e.status);
             }
         })
     },
     error: function(e){
-        console.log(e);
+        console.log(e.status);
+        switch (e.status) {
+          case 400:
+            $("#mapid").html("<h1>Erreur : "+e.status+"<br/>Problème dû à la requète.</h1>");
+            break;
+          case 401:
+            $("#mapid").html("<h1>Erreur : "+e.status+"<br/>Problème dû à la requète.</h1>");
+            break;
+          case 403:
+            $("#mapid").html("<h1>Erreur : "+e.status+"<br/>Problème dû à la requète.</h1>");
+            break;
+          case 404:
+            $("#mapid").html("<h1>Erreur : "+e.status+"<br/>Problème dû à la requète.</h1>");
+            break;
+          case 500:
+            $("#mapid").html("<h1>Erreur : "+e.status+"<br/>Problème dû au serveur.</h1>");
+            break;
+          case 503:
+            $("#mapid").html("<h1>Erreur : "+e.status+"<br/>Problème dû au serveur.</h1>");
+            break;
+          default:
+
+        }
     }
 });
